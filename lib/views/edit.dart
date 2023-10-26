@@ -29,7 +29,13 @@ class _EditPageState extends State<EditPage> {
           ),
           onChanged: _handleText,
         )),
-      body: Text('本文'),
+      body: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Write something',
+            ),
+            maxLines: null,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => router.go('/details', extra: _text),
         child: const Icon(Icons.check),
