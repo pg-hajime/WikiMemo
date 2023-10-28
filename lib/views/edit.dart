@@ -14,10 +14,17 @@ class EditPage extends StatefulWidget {
 class _EditPageState extends State<EditPage> {
 
   String _text='';
+  String _content_text='';
   final dbHelper = DatabaseHelper.instance;
+
   void _handleText(String e) {
     setState(() {
       _text = e;
+    });
+  }
+  void _handleCOntentText(String f) {
+    setState(() {
+      _content_text = f;
     });
   }
 
@@ -34,9 +41,10 @@ class _EditPageState extends State<EditPage> {
       body: TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: 'Write something',
+              hintText: '本文を書いてね',
             ),
             maxLines: null,
+           onChanged: _handleCOntentText,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -51,8 +59,9 @@ class _EditPageState extends State<EditPage> {
     // row to insert
     Map<String, dynamic> row = {
       DatabaseHelper.columnName : _text,
-      DatabaseHelper.columnContent  : 1
-    };
+      DatabaseHelper.columnContent  : _content_text
+
+  };
     final id = await dbHelper.insert(row);
     print('登録しました。id: $id');
   }
