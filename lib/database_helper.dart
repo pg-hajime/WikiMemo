@@ -6,14 +6,14 @@ import 'package:path_provider/path_provider.dart';
 
 class DatabaseHelper {
 
-  static final _databaseName = "MyDatabase.db"; // DB名
+  static final _databaseName = "wiki_memo.db"; // DB名
   static final _databaseVersion = 1; // スキーマのバージョン指定
 
-  static final table = 'my_table'; // テーブル名
+  static final table = 'memo_table'; // テーブル名
 
-  static final columnId = '_id'; // カラム名：ID
-  static final columnName = 'name'; // カラム名:Name
-  static final columnAge = 'age'; // カラム名：age
+  static final columnId = 'id'; // カラム名：ID
+  static final columnName = 'title_name'; // カラム名:title_name
+  static final columnContent = 'content'; // カラム名：content
 
   // DatabaseHelper クラスを定義
   DatabaseHelper._privateConstructor();
@@ -60,7 +60,7 @@ class DatabaseHelper {
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
             $columnName TEXT NOT NULL,
-            $columnAge INTEGER NOT NULL
+            $columnContent INTEGER NOT NULL
           )
           ''');
   }
